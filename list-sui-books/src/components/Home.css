@@ -1,0 +1,22 @@
+.Home {
+  position: relative;
+  background-image: linear-gradient(110.3deg, #495d6d 4.3%, #313752 96.7%);
+  min-height: calc(100vh - 60px);
+  margin: 15px;
+  padding: 15px;
+  border-radius: 20px;
+  color: #000;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.home-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 350px) {
+  .home-containe {
+    justify-content: unset;
+  }
+} ;
