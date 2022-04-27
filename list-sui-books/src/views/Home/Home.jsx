@@ -1,7 +1,7 @@
-import BookList from "./BookList";
+import BookList from "components/BooksList/BookList";
 import "./Home.css";
-import cart from "../assets/icons/cart.png";
-import logo from "../assets/logo.png";
+import cart from "assets/icons/cart.png";
+import logo from "assets/logo.png";
 
 function Home() {
   return (

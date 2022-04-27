@@ -44,9 +44,6 @@
 }
 
 .book-container > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   margin: 10px;
 }
 
@@ -85,7 +82,7 @@
 }
 
 .add-remove {
-  background-color: red;
+  background-color: #a60324;
 }
 
 .add-cart {
