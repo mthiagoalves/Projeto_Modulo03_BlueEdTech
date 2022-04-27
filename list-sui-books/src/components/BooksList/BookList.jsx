@@ -24,6 +24,8 @@ function BookList() {
           book={books}
           qtdSelected={selectBook[index]}
           index={index}
+          onAdd={(index) => addItem(index)}
+          onRemove={(index) => removeItem(index)}
         />
       ))}
     </div>

@@ -1,8 +1,7 @@
 import "./BookListItem.css";
 
-function BookListItem({ book, qtdSelected, index }) {
-  const removeItem = (i) => console.log("remove" + i);
-  const addItem = (i) => console.log("add" + i);
+function BookListItem({ book, qtdSelected, index, onRemove, onAdd }) {
+  
 
   const badgeCounter = (canRender, index) =>
     Boolean(canRender) && (
@@ -11,7 +10,7 @@ function BookListItem({ book, qtdSelected, index }) {
 
   const btnRemove = (canRender, index) =>
     Boolean(canRender) && (
-      <button className="add-remove" onClick={() => removeItem(index)}>
+      <button className="add-remove" onClick={() => onRemove(index)}>
         {" "}
         Remove to cart{" "}
       </button>
@@ -26,7 +25,7 @@ function BookListItem({ book, qtdSelected, index }) {
         <div className="btn-actions action">
           <button
             className={`add-cart ${!qtdSelected && "add-cart-pre"}`}
-            onClick={() => addItem(index)}
+            onClick={() => onAdd(index)}
           >
             Add to cart
           </button>
