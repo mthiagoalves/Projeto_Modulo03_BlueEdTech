@@ -43,8 +43,10 @@
   }
 }
 
-.book-container > div {
+.book-container {
   margin: 10px;
+  width: 100%;
+  max-width: 250px;
 }
 
 .book-title {
@@ -95,7 +97,7 @@
 }
 
 .book-img {
-  height: 150px;
+  height: 215px;
   margin-right: -60px;
 }
 

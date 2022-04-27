@@ -15,7 +15,7 @@ function Home() {
               alt="Logo Books Books"
               className="Logo__icone"
             />
-            <span className="Logo__titulo"> Books Books </span>
+            <span className="Logo__titulo"> Shelves Books </span>
           </div>
           <div className="Header__opcoes Opcoes">
             <div className="Opcoes__sacola Sacola">

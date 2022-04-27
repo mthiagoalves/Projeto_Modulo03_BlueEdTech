@@ -44,6 +44,17 @@ export const books = [
     continue: false,
   },
   {
+    title: "Hajime no Ippo",
+    description:
+      "One day some boys from his school surrounded him on the way home, and started beating Ippo, until a famous boxer Takamura Mamoru appeared to save him. Impressed by Takamura's strength, Ippo asks to be trained and learn boxing.",
+    img: require("../assets/img/hajime-no-ippo.jpg"),
+    author: "George Morikawa",
+    genre: "Action",
+    price: 19.9,
+    year: 1989,
+    continue: true,
+  },
+  {
     title: "Thanks for the Memories",
     description:
       "One of the world's most popular writers of women's fiction--author of the beloved international bestseller, P.S. I Love You, basis for the popular film starring Hilary Swank--Cecelia Ahern now gives us Thanks for the Memories, a heartwarming tale of déjà vu and second chances",
@@ -59,10 +70,21 @@ export const books = [
     description:
       "His name is Guts the Black Swordsman, a feared warrior spoken only in whispers.",
     img: require("../assets/img/berserk.jpg"),
-    author: "Cecelia Aherns",
-    genre: "Romance",
+    author: "Kentaro Miura",
+    genre: "Action",
     price: 59.9,
     year: 1993,
+    continue: true,
+  },
+  {
+    title: "Tokyo Revangers",
+    description:
+      "Takemichi Hanagaki, a 26-year-old freeter with no hope in life, discovers one day that his ex-girlfriend from high school, Hinata Tachibana, as well as his younger brother Naoto, are killed by the Tokyo Manji Gang.",
+    img: require("../assets/img/tokyo-revangers.jpg"),
+    author: "ken Wakui",
+    genre: "Fiction",
+    price: 35.0,
+    year: 2017,
     continue: true,
   },
 ];
