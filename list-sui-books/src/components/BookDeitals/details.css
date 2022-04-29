@@ -1,0 +1,71 @@
+.book-details {
+  
+  border-radius: 10px;
+  padding: 10px 0px 10px 10px;
+  max-height: 600px;
+  box-sizing: border-box;
+  width: 315px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+
+.book-details > div {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.book-title-modal {
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.book-author-modal {
+  color: #9400d3;
+}
+
+.book-descripton-modal {
+  font-size: 1em;
+}
+
+.book-price-modal {
+  color: #9400d3;
+  font-size: 2em;
+}
+
+.book-image-modal {
+  height: 250px;
+  margin-top: 50px;
+  margin-right: -150px;
+  z-index: 0;
+}
+
+@media (max-width: 400px) {
+  .book-details {
+    width: 210px;
+    height: 100vh;
+  }
+
+  .book-image-modal {
+    height: 250px;
+    margin-top: 50px;
+    margin-right: -100px;
+  }
+
+  .book-price-modal {
+    font-size: 2em;
+  }
+
+  .book-title-modal {
+    font-size: 1.5em;
+  }
+
+  .book-descripton-modal {
+    font-size: 0.9em;
+  }
+}

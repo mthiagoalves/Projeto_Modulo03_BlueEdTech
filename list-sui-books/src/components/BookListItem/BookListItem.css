@@ -1,93 +1,94 @@
 .book-list-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 10px 0 0 10px;
-    margin: 10px;
-    position: relative;
-    width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 10px 0 0 10px;
+  margin: 10px;
+  position: relative;
+  width: 350px;
+  height: 180px;
+  background: #00000050;
+  cursor: pointer;
+}
+
+@media (max-width: 400px) {
+  .book-list-item {
+    width: 210px;
     height: 180px;
-    background: #00000050;
   }
-  
-  @media (max-width: 400px) {
-    .book-list-item {
-      width: 210px;
-      height: 180px;
-    }
-  }
-  
-  .book-container {
-    margin: 10px;
-    width: 100%;
-    max-width: 250px;
-  }
-  
-  .book-title {
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 100%;
-  }
-  
-  .book-genre {
-    font-size: 0.85em;
-  }
-  
-  .book-author {
-    color: #9400d3;
-  }
-  
-  .action {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .add-cart,
-  .add-remove {
-    border: none;
-    color: #000000;
-    border-radius: 5px;
-    font-family: "Exo", sans-serif;
-    padding: 5px;
-    max-width: 280px;
-    text-align: center;
-    font-weight: 700;
-    text-transform: uppercase;
-    cursor: pointer;
-    width: 48%;
-  }
-  
-  .add-remove {
-    background-color: #a60324;
-  }
-  
-  .add-cart {
-    background-color: #add7f1;
-    border: #000000 1px solid;
-  }
-  
-  .add-cart-pre {
-    width: 100%;
-  }
-  
-  .book-img {
-    height: 215px;
-    margin-right: -60px;
-  }
-  
-  .book-list-item-badge {
-    background-color: #9400d3;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    vertical-align: middle;
-    position: absolute;
-    color: #fff;
-    font-size: 0.8em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    top: -9px;
-    left: -9px;
-  }
+}
+
+.book-container {
+  margin: 10px;
+  width: 100%;
+  max-width: 250px;
+}
+
+.book-title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.book-genre {
+  font-size: 0.85em;
+}
+
+.book-author {
+  color: #9400d3;
+}
+
+.action {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-cart,
+.add-remove {
+  border: none;
+  color: #000000;
+  border-radius: 5px;
+  font-family: "Exo", sans-serif;
+  padding: 5px;
+  max-width: 280px;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 48%;
+}
+
+.add-remove {
+  background-color: #a60324;
+}
+
+.add-cart {
+  background-color: #add7f1;
+  border: #000000 1px solid;
+}
+
+.add-cart-pre {
+  width: 100%;
+}
+
+.book-img {
+  height: 215px;
+  margin-right: -60px;
+}
+
+.book-list-item-badge {
+  background-color: #9400d3;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  position: absolute;
+  color: #fff;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  top: -9px;
+  left: -9px;
+}
