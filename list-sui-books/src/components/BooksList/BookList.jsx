@@ -27,6 +27,11 @@ function BookList() {
     setBooks(response);
   };
 
+  // const getById = async (bookId) => {
+  //   const response = await BookServices.getById(bookId);
+  //   setBookModal(response);
+  // };
+
   useEffect(() => {
     getList();
   }, []);
