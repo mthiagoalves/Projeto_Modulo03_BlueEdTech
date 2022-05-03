@@ -25,8 +25,15 @@ export const BookServices = {
     fetch(Api.booklist(), { method: "GET" }).then(parseTransformList),
   getById: (id) =>
     fetch(Api.bookById(id), { method: "GET" }).then(parseTransformItem),
-  createBook: () =>
-    fetch(Api.createBook(), { method: "POST" }).then(parseResponse),
+  createBook: (books) =>
+    fetch(Api.createBook(), {
+      method: "POST",
+      body: JSON.stringify(books),
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(parseTransformItem),
   updateBook: (id) =>
     fetch(Api.updateBook(id), { method: "PUT" }).then(parseResponse),
   deleteBook: (id) =>

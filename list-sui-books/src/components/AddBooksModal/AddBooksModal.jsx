@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Modal from "components/Modal/Modal";
 import "./AddBooksModal.css";
+import { BookServices } from "services/BookServices";
 
 function AddBooksModal({ closeModal }) {
   const form = {
@@ -28,7 +29,9 @@ function AddBooksModal({ closeModal }) {
         state.img.length &&
         state.title.length &&
         state.price.length &&
-        state.author.length
+        state.author.length &&
+        state.year.length &&
+        state.genre.length
     );
     setCanDisable(response);
   };
@@ -36,6 +39,27 @@ function AddBooksModal({ closeModal }) {
   useEffect(() => {
     canDisableSendBtn();
   });
+
+  const bookCreate = async () => {
+    const renameimg = (imgPath) => imgPath.split("\\").pop();
+
+    const { title, price, author, year, genre, description, img } = state;
+
+    const books = {
+      title,
+      description,
+      price,
+      year,
+      genre,
+      author,
+      img: `assets/images/${renameimg(img)}`,
+      continue: true,
+    };
+    console.log(books);
+    const response = await BookServices.createBook(books);
+
+    closeModal();
+  };
 
   return (
     <Modal closeModal={closeModal}>
@@ -91,6 +115,7 @@ function AddBooksModal({ closeModal }) {
               placeholder="Year book"
               value={state.year}
               onChange={(event) => handleChange(event, "year")}
+              required
             />
           </div>
           <div>
@@ -116,6 +141,7 @@ function AddBooksModal({ closeModal }) {
               placeholder="Description"
               value={state.description}
               onChange={(event) => handleChange(event, "description")}
+              required
             />
           </div>
           <div>
@@ -137,7 +163,12 @@ function AddBooksModal({ closeModal }) {
               required
             />
           </div>
-          <button className="btn-add-book" type="button" disabled={canDisable}>
+          <button
+            className="btn-add-book"
+            type="button"
+            disabled={canDisable}
+            onClick={bookCreate}
+          >
             Register
           </button>
         </form>
