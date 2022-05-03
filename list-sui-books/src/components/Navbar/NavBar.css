@@ -16,7 +16,7 @@
   align-items: center;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.3);
-  width: 360px;
+  width: 380px;
   height: 45px;
 }
 
@@ -25,6 +25,7 @@
   left: 55px;
   font-weight: 700;
   font-size: 2.5em;
+  color: #000000;
 }
 
 .Logo__icone {
@@ -58,6 +59,20 @@
   right: 0;
 }
 
+.Options {
+  display: flex;
+}
+
+.books {
+  background: none;
+  border: none;
+}
+
+.book-icon {
+  width: 40px;
+  cursor: pointer;
+}
+
 @media (max-width: 1220px) {
   .Header {
     max-width: 720px;
@@ -67,6 +82,15 @@
 @media (max-width: 840px) {
   .Header {
     max-width: 320px;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  .Logo__titulo {
+    font-size: 2em;
   }
 }
 
@@ -81,5 +105,9 @@
 
   .Logo__titulo {
     font-size: 1.5em;
+  }
+
+  .Logo {
+    width: 100%;
   }
 }

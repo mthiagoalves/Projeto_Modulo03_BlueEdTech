@@ -1,4 +1,4 @@
-import "./modal.css";
+import "./Modal.css";
 import Overlay from "components/overlay/overlay";
 
 function modal({ children, closeModal }) {
@@ -9,7 +9,9 @@ function modal({ children, closeModal }) {
   return (
     <Overlay overlayClick={closeModal}>
       <div className="modal" onClick={handleClick}>
-        <span className="modal-close"  onClick={(e) => handleClick(e, true)}>+</span>
+        <span className="modal-close" onClick={(e) => handleClick(e, true)}>
+          +
+        </span>
         <div className="modal-body">{children}</div>
       </div>
     </Overlay>

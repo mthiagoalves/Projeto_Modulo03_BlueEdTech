@@ -1,5 +1,5 @@
 import "./details.css";
-import Modal from "components/modal/modal";
+import Modal from "components/Modal/Modal";
 
 function BooksDetails({ books, closeModal }) {
   return (
@@ -9,6 +9,7 @@ function BooksDetails({ books, closeModal }) {
           <div className="book-title-modal">{books.title}</div>
           <div className="book-price-modal">$ {Number(books.price).toFixed(2)}</div>
           <div className="book-author-modal"><b>{books.author}</b></div>
+          <div className="book-descripton-modal"><b>Year:</b> {books.year}</div>
           <div className="book-descripton-modal"><b>Genre:</b> {books.genre}</div>
           <div className="book-descripton-modal"><b>Descr.: </b>{books.description}</div>
         </div>

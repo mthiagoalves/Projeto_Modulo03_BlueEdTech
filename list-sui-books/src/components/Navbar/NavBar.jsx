@@ -1,8 +1,9 @@
 import "./NavBar.css";
 import cart from "assets/icons/cart.png";
+import add from "assets/icons/add-books.png";
 import logo from "assets/logo.png";
 
-function NavBar() {
+function NavBar({ createBook }) {
   return (
     <div className="Home__header Header">
       <div className="row">
@@ -15,7 +16,10 @@ function NavBar() {
           />
           <span className="Logo__titulo"> Shelves Books </span>
         </div>
-        <div className="Header__opcoes Opcoes">
+        <div className="Header__opcoes Options">
+          <button type="button" className="options-books books" onClick={() => createBook()}>
+            <img src={add} className="book-icon" alt="add books" />
+          </button>
           <div className="Opcoes__sacola Sacola">
             <img
               src={cart}
