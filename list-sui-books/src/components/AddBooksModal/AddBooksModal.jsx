@@ -3,7 +3,7 @@ import Modal from "components/Modal/Modal";
 import "./AddBooksModal.css";
 import { BookServices } from "services/BookServices";
 
-function AddBooksModal({ closeModal }) {
+function AddBooksModal({ closeModal, onCreateBook }) {
   const form = {
     title: "",
     price: "",
@@ -52,12 +52,13 @@ function AddBooksModal({ closeModal }) {
       year,
       genre,
       author,
-      img: `assets/images/${renameimg(img)}`,
+      img: `assets/img/${renameimg(img)}`,
       continue: true,
     };
     console.log(books);
     const response = await BookServices.createBook(books);
 
+    onCreateBook(response);
     closeModal();
   };
 

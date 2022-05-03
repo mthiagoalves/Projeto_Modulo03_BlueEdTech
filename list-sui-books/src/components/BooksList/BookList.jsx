@@ -5,7 +5,7 @@ import BookDetailsModal from "components/BookDeitals/details";
 
 import "./BookList.css";
 
-function BookList() {
+function BookList({ bookCreated }) {
   const [books, setBooks] = useState([]);
 
   const [selectBook, setSelectBook] = useState({});
@@ -35,6 +35,15 @@ function BookList() {
   useEffect(() => {
     getList();
   }, []);
+
+  const addBookToList = (book) => {
+    const list = [...books, book];
+    setBooks(list);
+  };
+
+  useEffect(() => {
+    if (bookCreated) addBookToList(bookCreated);
+  }, [bookCreated]);
 
   return (
     <div className="book-list">

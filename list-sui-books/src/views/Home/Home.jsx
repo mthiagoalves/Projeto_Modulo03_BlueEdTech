@@ -7,14 +7,18 @@ import NavBar from "components/Navbar/NavBar";
 function Home() {
   const [canShowBookModal, setCanShowBookModal] = useState(false);
 
+  const [bookToAdd, setBookToAdd] = useState();
   return (
     <div className="Home">
       <NavBar createBook={() => setCanShowBookModal(true)} />
       <div className="home-container">
-        <BookList />
-        {
-          canShowBookModal && (<AddBooksModal closeModal={() => setCanShowBookModal(false)}/>)
-        }
+        <BookList bookCreated={bookToAdd}/>
+        {canShowBookModal && (
+          <AddBooksModal
+            closeModal={() => setCanShowBookModal(false)}
+            onCreateBook={(book) => setBookToAdd(book)}
+          />
+        )}
       </div>
     </div>
   );
