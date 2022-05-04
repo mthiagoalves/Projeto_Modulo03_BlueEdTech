@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import Modal from "components/Modal/Modal";
-import "./AddBooksModal.css";
+import "./AddEditBooksModal.css";
 import { BookServices } from "services/BookServices";
 
-function AddBooksModal({ closeModal, onCreateBook }) {
+function AddEditBooksModal({ closeModal, onCreateBook }) {
   const form = {
     title: "",
     price: "",
@@ -178,4 +178,4 @@ function AddBooksModal({ closeModal, onCreateBook }) {
   );
 }
 
-export default AddBooksModal;
+export default AddEditBooksModal;

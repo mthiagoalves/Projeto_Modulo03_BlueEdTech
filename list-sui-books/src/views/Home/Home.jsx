@@ -1,20 +1,32 @@
 import BookList from "components/BooksList/BookList";
 import { useState } from "react";
-import AddBooksModal from "components/AddBooksModal/AddBooksModal";
+import AddEditBooksModal from "components/AddEditBooksModal/AddEditBooksModal";
 import "./Home.css";
 import NavBar from "components/Navbar/NavBar";
+import { ActionMode } from "constants/index";
 
 function Home() {
   const [canShowBookModal, setCanShowBookModal] = useState(false);
-
   const [bookToAdd, setBookToAdd] = useState();
+  const [currentyMode, setCurrentyMode] = useState(ActionMode.NORMAL);
+
+  const handleAction = (action) => {
+    const newAction = currentyMode === action ? ActionMode.NORMAL : action;
+    console.log(newAction);
+    setCurrentyMode(newAction);
+  };
+
   return (
     <div className="Home">
-      <NavBar createBook={() => setCanShowBookModal(true)} />
+      <NavBar
+        mode={currentyMode}
+        createBook={() => setCanShowBookModal(true)}
+        updateBook={() => handleAction(ActionMode.UPDATE)}
+      />
       <div className="home-container">
-        <BookList bookCreated={bookToAdd}/>
+        <BookList bookCreated={bookToAdd} />
         {canShowBookModal && (
-          <AddBooksModal
+          <AddEditBooksModal
             closeModal={() => setCanShowBookModal(false)}
             onCreateBook={(book) => setBookToAdd(book)}
           />

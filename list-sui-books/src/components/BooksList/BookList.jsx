@@ -27,10 +27,11 @@ function BookList({ bookCreated }) {
     setBooks(response);
   };
 
-  // const getById = async (bookId) => {
-  //   const response = await BookServices.getById(bookId);
-  //   setBookModal(response);
-  // };
+  const getById = async (bookId) => {
+    const response = await BookServices.getById(bookId);
+    console.log(response);
+    setBookModal(response);
+  };
 
   useEffect(() => {
     getList();
@@ -55,7 +56,7 @@ function BookList({ bookCreated }) {
           index={index}
           onAdd={(index) => addItem(index)}
           onRemove={(index) => removeItem(index)}
-          clickItem={(booksId) => setBookModal(books)}
+          clickItem={(booksId) => getById(booksId)}
         />
       ))}
       {bookModal && (

@@ -66,11 +66,22 @@
 .books {
   background: none;
   border: none;
+  transform: translateY(-3px);
+  border-radius: 10px;
+  transition: all 0.5s;
+  padding: 0;
 }
 
 .book-icon {
   width: 40px;
   cursor: pointer;
+  transform: translateY(3px);
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.book-action {
+  background: #ffffff4d;
 }
 
 @media (max-width: 1220px) {

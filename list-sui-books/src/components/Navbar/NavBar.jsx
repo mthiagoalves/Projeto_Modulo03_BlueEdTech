@@ -1,9 +1,11 @@
 import "./NavBar.css";
+import { ActionMode } from "constants/index";
 import cart from "assets/icons/cart.png";
 import add from "assets/icons/add-books.png";
 import logo from "assets/logo.png";
+import edit from "assets/icons/book-edit.png";
 
-function NavBar({ createBook }) {
+function NavBar({ createBook, updateBook, mode }) {
   return (
     <div className="Home__header Header">
       <div className="row">
@@ -17,7 +19,18 @@ function NavBar({ createBook }) {
           <span className="Logo__titulo"> Shelves Books </span>
         </div>
         <div className="Header__opcoes Options">
-          <button type="button" className="options-books books" onClick={() => createBook()}>
+          <button
+            type="button"
+            className={`options-books books ${mode === ActionMode.UPDATE && "book-action"}`}
+            onClick={() => updateBook()}
+          >
+            <img src={edit} className="book-icon" alt="Update Book" />
+          </button>
+          <button
+            type="button"
+            className="options-books books"
+            onClick={() => createBook()}
+          >
             <img src={add} className="book-icon" alt="add books" />
           </button>
           <div className="Opcoes__sacola Sacola">
