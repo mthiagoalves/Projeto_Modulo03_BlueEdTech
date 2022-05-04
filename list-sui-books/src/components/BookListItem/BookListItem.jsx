@@ -1,4 +1,5 @@
 import "./BookListItem.css";
+import { ActionMode } from "constants/index";
 
 function BookListItem({
   book,
@@ -7,6 +8,7 @@ function BookListItem({
   onRemove,
   onAdd,
   clickItem,
+  mode,
 }) {
   const badgeCounter = (canRender, index) =>
     Boolean(canRender) && (
@@ -16,6 +18,7 @@ function BookListItem({
   const btnRemove = (canRender, index) =>
     Boolean(canRender) && (
       <button
+        disabled={mode !== ActionMode.NORMAL}
         className="add-remove"
         onClick={(e) => {
           e.stopPropagation();
@@ -26,15 +29,27 @@ function BookListItem({
         Remove to cart{" "}
       </button>
     );
+
+  const badgeAction = (canRender) => {
+    if (canRender) return <span className="book-list-item-tag">{mode}</span>;
+  };
+
   return (
-    <div className="book-list-item" onClick={() => clickItem(book.id)}>
+    <div
+      className={`book-list-item ${
+        mode !== ActionMode.NORMAL && "book-list-item-disable"
+      }`}
+      onClick={() => clickItem(book.id)}
+    >
       {badgeCounter(qtdSelected, index)}
+      {badgeAction(mode !== ActionMode.NORMAL)}
       <div className="book-container">
         <div className="book-title">{book.title}</div>
         <div className="book-price">$ {book.price}</div>
         <div className="book-author">{book.author}</div>
         <div className="btn-actions action">
           <button
+            disabled={mode !== ActionMode.NORMAL}
             className={`add-cart ${!qtdSelected && "add-cart-pre"}`}
             onClick={(e) => {
               e.stopPropagation();

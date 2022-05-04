@@ -10,10 +10,29 @@ function Home() {
   const [bookToAdd, setBookToAdd] = useState();
   const [currentyMode, setCurrentyMode] = useState(ActionMode.NORMAL);
 
+  const [bookForEdit, setBookForEdit] = useState();
+  const [bookForDelete, setBookForDelete] = useState();
+
   const handleAction = (action) => {
     const newAction = currentyMode === action ? ActionMode.NORMAL : action;
     console.log(newAction);
     setCurrentyMode(newAction);
+  };
+
+  const handleDeleteBook = (bookForDelete) => {
+    setBookForDelete(bookForDelete);
+  };
+
+  const handleUpdateBook = (bookForUpdate) => {
+    setBookForEdit(bookForUpdate);
+    setCanShowBookModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setCanShowBookModal(false);
+    setBookToAdd();
+    setBookForDelete();
+    setBookForEdit();
   };
 
   return (
@@ -24,10 +43,17 @@ function Home() {
         updateBook={() => handleAction(ActionMode.UPDATE)}
       />
       <div className="home-container">
-        <BookList bookCreated={bookToAdd} />
+        <BookList
+          deleteBook={handleDeleteBook}
+          updateBook={handleUpdateBook}
+          bookCreated={bookToAdd}
+          mode={currentyMode}
+        />
         {canShowBookModal && (
           <AddEditBooksModal
-            closeModal={() => setCanShowBookModal(false)}
+            mode={currentyMode}
+            bookForEdit={bookForEdit}
+            closeModal={handleCloseModal}
             onCreateBook={(book) => setBookToAdd(book)}
           />
         )}
