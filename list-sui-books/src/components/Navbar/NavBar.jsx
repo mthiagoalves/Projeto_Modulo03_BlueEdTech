@@ -22,20 +22,40 @@ function NavBar({ createBook, updateBook, mode, deleteBook }) {
         <div className="Header__opcoes Options">
           <button
             type="button"
-            className={`options-books books ${
-              mode === ActionMode.UPDATE && "book-action"
-            }`}
-            onClick={() => updateBook()}
-          >
-            <img src={edit} className="book-icon" alt="Update Book" />
-          </button>
-          <button
-            type="button"
             className="options-books books"
             onClick={() => createBook()}
           >
             <img src={add} className="book-icon" alt="add books" />
           </button>
+          <button
+            type="button"
+            className={`options-books books ${
+              mode === ActionMode.UPDATE && "book-action"
+            }`}
+            onClick={() => updateBook()}
+          >
+            <img
+              src={edit}
+              width="40px"
+              className="book-icon"
+              alt="Update Book"
+            />
+          </button>
+          <button
+            type="button"
+            className={`options-books books ${
+              mode === ActionMode.DELET && "book-delete"
+            }`}
+            onClick={() => deleteBook()}
+          >
+            <img
+              src={delet}
+              width="40px"
+              className="book-icon"
+              alt="Update Book"
+            />
+          </button>
+
           <div className="Opcoes__sacola Sacola">
             <img
               src={cart}

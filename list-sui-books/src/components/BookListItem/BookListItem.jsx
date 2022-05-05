@@ -31,14 +31,23 @@ function BookListItem({
     );
 
   const badgeAction = (canRender) => {
-    if (canRender) return <span className="book-list-item-tag">{mode}</span>;
+    if (canRender)
+      return (
+        <span
+          className={`book-list-item-tag ${
+            mode === ActionMode.DELET && "book-list-item-tag-delete"
+          }`}
+        >
+          {mode}
+        </span>
+      );
   };
 
   return (
     <div
       className={`book-list-item ${
         mode !== ActionMode.NORMAL && "book-list-item-disable"
-      }`}
+      } ${mode === ActionMode.DELET && "book-list-item-delete"}`}
       onClick={() => clickItem(book.id)}
     >
       {badgeCounter(qtdSelected, index)}

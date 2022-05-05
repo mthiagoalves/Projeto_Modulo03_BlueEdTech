@@ -4,7 +4,7 @@ import AddEditBooksModal from "components/AddEditBooksModal/AddEditBooksModal";
 import "./Home.css";
 import NavBar from "components/Navbar/NavBar";
 import { ActionMode } from "constants/index";
-
+import DeleteBookModal from "components/DeleteBookModal/DeleteBookModal";
 
 function Home() {
   const [canShowBookModal, setCanShowBookModal] = useState(false);
@@ -14,6 +14,7 @@ function Home() {
   const [bookForEdit, setBookForEdit] = useState();
   const [bookForDelete, setBookForDelete] = useState();
   const [bookEdited, setBookEdited] = useState();
+  const [bookDeleted, setBookDeleted] = useState();
 
   const handleAction = (action) => {
     const newAction = currentyMode === action ? ActionMode.NORMAL : action;
@@ -43,9 +44,11 @@ function Home() {
         mode={currentyMode}
         createBook={() => setCanShowBookModal(true)}
         updateBook={() => handleAction(ActionMode.UPDATE)}
+        deleteBook={() => handleAction(ActionMode.DELET)}
       />
       <div className="home-container">
         <BookList
+          bookDeleted={bookDeleted}
           bookEdited={bookEdited}
           deleteBook={handleDeleteBook}
           updateBook={handleUpdateBook}
@@ -59,6 +62,13 @@ function Home() {
             onUpdateBook={(book) => setBookEdited(book)}
             closeModal={handleCloseModal}
             onCreateBook={(book) => setBookToAdd(book)}
+          />
+        )}
+        {bookForDelete && (
+          <DeleteBookModal
+            bookForDelete={bookForDelete}
+            closeModal={handleCloseModal}
+            onDeleteBook={(book) => setBookDeleted(book)}
           />
         )}
       </div>

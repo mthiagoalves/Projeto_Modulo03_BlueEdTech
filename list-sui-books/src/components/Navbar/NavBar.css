@@ -84,6 +84,10 @@
   background: #ffffff4d;
 }
 
+.book-delete {
+  background: rgba(211, 0, 0);
+}
+
 @media (max-width: 1220px) {
   .Header {
     max-width: 720px;

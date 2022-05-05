@@ -1,0 +1,38 @@
+.delete-book-modal {
+  margin-top: -20px;
+}
+
+.delete-book-modal > div {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.delete-book-modal-img {
+  position: absolute;
+  right: -141px;
+  bottom: -10px;
+  width: 154px;
+}
+
+.delete-book-modal-confirm,
+.delete-book-modal-cancel {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  max-width: 280px;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 48%;
+  color: white;
+}
+
+.delete-book-modal-confirm {
+  background-color: #9400d3;
+}
+
+.delete-book-modal-cancel {
+  background-color: #ff0000;
+}

@@ -6,7 +6,14 @@ import BookDetailsModal from "components/BookDeitals/details";
 
 import "./BookList.css";
 
-function BookList({ bookCreated, mode, updateBook, deleteBook, bookEdited }) {
+function BookList({
+  bookCreated,
+  mode,
+  updateBook,
+  deleteBook,
+  bookEdited,
+  bookDeleted,
+}) {
   const [books, setBooks] = useState([]);
 
   const [selectBook, setSelectBook] = useState({});
@@ -42,7 +49,7 @@ function BookList({ bookCreated, mode, updateBook, deleteBook, bookEdited }) {
 
   useEffect(() => {
     getList();
-  }, [bookEdited]);
+  }, [bookEdited, bookDeleted]);
 
   const addBookToList = useCallback(
     (book) => {
