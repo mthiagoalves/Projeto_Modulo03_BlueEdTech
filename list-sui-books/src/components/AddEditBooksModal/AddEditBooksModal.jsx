@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import Modal from "components/Modal/Modal";
-import "./AddEditBooksModal.css";
-import { BookServices } from "services/BookServices";
-import { ActionMode } from "constants/index";
+import { useState, useEffect } from 'react';
+import Modal from 'components/Modal/Modal';
+import './AddEditBooksModal.css';
+import { BookServices } from 'services/BookServices';
+import { ActionMode } from 'constants/index';
 
 function AddEditBooksModal({
   closeModal,
@@ -12,13 +12,13 @@ function AddEditBooksModal({
   onUpdateBook,
 }) {
   const form = {
-    title: bookForEdit?.title ?? "",
-    price: bookForEdit?.price ?? "",
-    author: bookForEdit?.author ?? "",
-    year: bookForEdit?.year ?? "",
-    genre: bookForEdit?.genre ?? "",
-    description: bookForEdit?.description ?? "",
-    img: bookForEdit?.img ?? "",
+    title: bookForEdit?.title ?? '',
+    price: bookForEdit?.price ?? '',
+    author: bookForEdit?.author ?? '',
+    year: bookForEdit?.year ?? '',
+    genre: bookForEdit?.genre ?? '',
+    description: bookForEdit?.description ?? '',
+    img: bookForEdit?.img ?? '',
     continue: true,
   };
 
@@ -40,7 +40,7 @@ function AddEditBooksModal({
         String(state.price).length &&
         state.author.length &&
         String(state.year).length &&
-        state.genre.length
+        state.genre.length,
     );
     setCanDisable(response);
   };
@@ -83,13 +83,13 @@ function AddEditBooksModal({
     actionResponse[mode]();
 
     const resetInput = {
-      title: "",
-      description: "",
-      price: "",
-      year: "",
-      genre: "",
-      author: "",
-      img: "",
+      title: '',
+      description: '',
+      price: '',
+      year: '',
+      genre: '',
+      author: '',
+      img: '',
       continue: true,
     };
 
@@ -103,8 +103,8 @@ function AddEditBooksModal({
       <div className="add-book-modal">
         <form autoComplete="off">
           <h2>
-            {" "}
-            {ActionMode.UPDATE === mode ? "Update" : "Add"} book to library
+            {' '}
+            {ActionMode.UPDATE === mode ? 'Update' : 'Add'} book to library
           </h2>
           <div>
             <label htmlFor="title" className="add-book-modal-text">
@@ -115,7 +115,7 @@ function AddEditBooksModal({
               id="title"
               placeholder="Book title"
               value={state.title}
-              onChange={(event) => handleChange(event, "title")}
+              onChange={(event) => handleChange(event, 'title')}
               required
             />
           </div>
@@ -128,7 +128,7 @@ function AddEditBooksModal({
               id="title"
               placeholder="Price"
               value={state.price}
-              onChange={(event) => handleChange(event, "price")}
+              onChange={(event) => handleChange(event, 'price')}
               required
             />
           </div>
@@ -141,7 +141,7 @@ function AddEditBooksModal({
               id="author"
               placeholder="Author"
               value={state.author}
-              onChange={(event) => handleChange(event, "author")}
+              onChange={(event) => handleChange(event, 'author')}
               required
             />
           </div>
@@ -154,7 +154,7 @@ function AddEditBooksModal({
               id="year"
               placeholder="Year book"
               value={state.year}
-              onChange={(event) => handleChange(event, "year")}
+              onChange={(event) => handleChange(event, 'year')}
               required
             />
           </div>
@@ -167,7 +167,7 @@ function AddEditBooksModal({
               id="genre"
               placeholder="Genre"
               value={state.genre}
-              onChange={(event) => handleChange(event, "genre")}
+              onChange={(event) => handleChange(event, 'genre')}
               required
             />
           </div>
@@ -180,7 +180,7 @@ function AddEditBooksModal({
               id="description"
               placeholder="Description"
               value={state.description}
-              onChange={(event) => handleChange(event, "description")}
+              onChange={(event) => handleChange(event, 'description')}
               required
             />
           </div>
@@ -189,7 +189,7 @@ function AddEditBooksModal({
               htmlFor="img"
               className="add-book-modal-text add-book-modal-img-label"
             >
-              {!state.img.length ? "Select Book Cover" : state.img}
+              {!state.img.length ? 'Select Book Cover' : state.img}
             </label>
 
             <input
@@ -198,7 +198,7 @@ function AddEditBooksModal({
               accept="image/png, image/gif, image/jpg, image/jpeg"
               id="img"
               placeholder="Book cover"
-              onChange={(event) => handleChange(event, "img")}
+              onChange={(event) => handleChange(event, 'img')}
               required
             />
           </div>
@@ -208,7 +208,7 @@ function AddEditBooksModal({
             disabled={canDisable}
             onClick={handleSend}
           >
-            {ActionMode.NORMAL === mode ? "Register" : "Update"}
+            {ActionMode.NORMAL === mode ? 'Register' : 'Update'}
           </button>
         </form>
       </div>
