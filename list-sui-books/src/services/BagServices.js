@@ -4,7 +4,7 @@ const parseResponse = (response) => response.json();
 
 export const BagServices = {
   getList: () => fetch(Api.getBag(), { method: 'GET' }).then(parseResponse),
-  create: (bag) =>
+  createBag: (bag) =>
     fetch(Api.getBag(), {
       method: 'POST',
       body: JSON.stringify(bag),

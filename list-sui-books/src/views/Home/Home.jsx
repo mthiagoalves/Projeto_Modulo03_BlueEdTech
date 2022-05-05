@@ -45,7 +45,7 @@ function Home() {
     const list = JSON.parse(localStorage.getItem('bag'));
     const bag = list.filter((i) => i.amount > 0);
 
-    await BagServices.create(bag);
+    await BagServices.createBag(bag);
 
     setCanOpenBag(true);
   };
