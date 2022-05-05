@@ -8,11 +8,18 @@ const transformBook = (book) => {
   return {
     ...book,
     id: book._id,
-    titulo: book.title,
+    title: book.title,
+    description: book.description,
     price: book.price,
+    year: book.year,
+    genre: book.genre,
+    author: book.author,
+    img: book.img,
     continue: Boolean(title),
   };
 };
+
+
 
 const parseTransformList = (response) =>
   parseResponse(response).then((books) => books.map(transformBook));
@@ -34,8 +41,15 @@ export const BookServices = {
         "Content-Type": "application/json",
       },
     }).then(parseTransformItem),
-  updateBook: (id) =>
-    fetch(Api.updateBook(id), { method: "PUT" }).then(parseResponse),
+  updateBook: (id, book) =>
+    fetch(Api.updateBook(id), {
+      method: "PUT",
+      body: JSON.stringify(book),
+      mode: "cors",
+      headers: {
+        "Content-type": "application/json",
+      },
+    }).then(parseResponse),
   deleteBook: (id) =>
     fetch(Api.deleteBook(id), { method: "DELETE" }).then(parseResponse),
 };

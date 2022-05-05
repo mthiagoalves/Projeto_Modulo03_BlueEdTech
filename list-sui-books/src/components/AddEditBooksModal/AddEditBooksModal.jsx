@@ -2,20 +2,29 @@ import { useState, useEffect } from "react";
 import Modal from "components/Modal/Modal";
 import "./AddEditBooksModal.css";
 import { BookServices } from "services/BookServices";
+import { ActionMode } from "constants/index";
 
-function AddEditBooksModal({ closeModal, onCreateBook }) {
+function AddEditBooksModal({
+  closeModal,
+  onCreateBook,
+  mode,
+  bookForEdit,
+  onUpdateBook,
+}) {
   const form = {
-    title: "",
-    price: "",
-    author: "",
-    year: "",
-    genre: "",
-    description: "",
-    img: "",
+    title: bookForEdit?.title ?? "",
+    price: bookForEdit?.price ?? "",
+    author: bookForEdit?.author ?? "",
+    year: bookForEdit?.year ?? "",
+    genre: bookForEdit?.genre ?? "",
+    description: bookForEdit?.description ?? "",
+    img: bookForEdit?.img ?? "",
     continue: true,
   };
 
   const [state, SetState] = useState(form);
+
+  console.log(form);
 
   const handleChange = (event, name) => {
     SetState({ ...state, [name]: event.target.value });
@@ -28,9 +37,9 @@ function AddEditBooksModal({ closeModal, onCreateBook }) {
       state.description.length &&
         state.img.length &&
         state.title.length &&
-        state.price.length &&
+        String(state.price).length &&
         state.author.length &&
-        state.year.length &&
+        String(state.year).length &&
         state.genre.length
     );
     setCanDisable(response);
@@ -40,25 +49,52 @@ function AddEditBooksModal({ closeModal, onCreateBook }) {
     canDisableSendBtn();
   });
 
-  const bookCreate = async () => {
-    const renameimg = (imgPath) => imgPath.split("\\").pop();
+  const handleSend = async () => {
+    const renameImg = (imgPath) => imgPath.split(/\\|\//).pop();
 
     const { title, price, author, year, genre, description, img } = state;
 
     const books = {
+      ...(bookForEdit && { _id: bookForEdit?.id }),
       title,
       description,
       price,
       year,
       genre,
       author,
-      img: `assets/img/${renameimg(img)}`,
+      img: `assets/img/${renameImg(img)}`,
       continue: true,
     };
     console.log(books);
-    const response = await BookServices.createBook(books);
 
-    onCreateBook(response);
+    const serviceCall = {
+      [ActionMode.NORMAL]: () => BookServices.createBook(books),
+      [ActionMode.UPDATE]: () =>
+        BookServices.updateBook(bookForEdit?.id, books),
+    };
+
+    const response = await serviceCall[mode]();
+
+    const actionResponse = {
+      [ActionMode.NORMAL]: () => onCreateBook(response),
+      [ActionMode.UPDATE]: () => onUpdateBook(response),
+    };
+
+    actionResponse[mode]();
+
+    const resetInput = {
+      title: "",
+      description: "",
+      price: "",
+      year: "",
+      genre: "",
+      author: "",
+      img: "",
+      continue: true,
+    };
+
+    SetState(resetInput);
+
     closeModal();
   };
 
@@ -66,7 +102,10 @@ function AddEditBooksModal({ closeModal, onCreateBook }) {
     <Modal closeModal={closeModal}>
       <div className="add-book-modal">
         <form autoComplete="off">
-          <h2>Add books to library</h2>
+          <h2>
+            {" "}
+            {ActionMode.UPDATE === mode ? "Update" : "Add"} book to library
+          </h2>
           <div>
             <label htmlFor="title" className="add-book-modal-text">
               Title:
@@ -159,7 +198,6 @@ function AddEditBooksModal({ closeModal, onCreateBook }) {
               accept="image/png, image/gif, image/jpg, image/jpeg"
               id="img"
               placeholder="Book cover"
-              value={state.img}
               onChange={(event) => handleChange(event, "img")}
               required
             />
@@ -168,9 +206,9 @@ function AddEditBooksModal({ closeModal, onCreateBook }) {
             className="btn-add-book"
             type="button"
             disabled={canDisable}
-            onClick={bookCreate}
+            onClick={handleSend}
           >
-            Register
+            {ActionMode.NORMAL === mode ? "Register" : "Update"}
           </button>
         </form>
       </div>

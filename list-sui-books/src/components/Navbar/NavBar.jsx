@@ -4,8 +4,9 @@ import cart from "assets/icons/cart.png";
 import add from "assets/icons/add-books.png";
 import logo from "assets/logo.png";
 import edit from "assets/icons/book-edit.png";
+import delet from "assets/icons/book-delete.png";
 
-function NavBar({ createBook, updateBook, mode }) {
+function NavBar({ createBook, updateBook, mode, deleteBook }) {
   return (
     <div className="Home__header Header">
       <div className="row">
@@ -21,7 +22,9 @@ function NavBar({ createBook, updateBook, mode }) {
         <div className="Header__opcoes Options">
           <button
             type="button"
-            className={`options-books books ${mode === ActionMode.UPDATE && "book-action"}`}
+            className={`options-books books ${
+              mode === ActionMode.UPDATE && "book-action"
+            }`}
             onClick={() => updateBook()}
           >
             <img src={edit} className="book-icon" alt="Update Book" />

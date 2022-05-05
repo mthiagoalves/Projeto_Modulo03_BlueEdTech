@@ -6,7 +6,7 @@ import BookDetailsModal from "components/BookDeitals/details";
 
 import "./BookList.css";
 
-function BookList({ bookCreated, mode, updateBook, deleteBook }) {
+function BookList({ bookCreated, mode, updateBook, deleteBook, bookEdited }) {
   const [books, setBooks] = useState([]);
 
   const [selectBook, setSelectBook] = useState({});
@@ -30,18 +30,19 @@ function BookList({ bookCreated, mode, updateBook, deleteBook }) {
 
   const getById = async (bookId) => {
     const response = await BookServices.getById(bookId);
+
+    console.log(response);
     const mapper = {
       [ActionMode.NORMAL]: () => setBookModal(response),
       [ActionMode.UPDATE]: () => updateBook(response),
       [ActionMode.DELET]: () => deleteBook(response),
     };
     mapper[mode]();
-    console.log(mapper);
   };
 
   useEffect(() => {
     getList();
-  }, []);
+  }, [bookEdited]);
 
   const addBookToList = useCallback(
     (book) => {
@@ -56,10 +57,6 @@ function BookList({ bookCreated, mode, updateBook, deleteBook }) {
       addBookToList(bookCreated);
     }
   }, [addBookToList, bookCreated, books]);
-
-  // useEffect(() => {
-  //   if (bookCreated) addBookToList(bookCreated);
-  // }, [bookCreated]);
 
   return (
     <div className="book-list">

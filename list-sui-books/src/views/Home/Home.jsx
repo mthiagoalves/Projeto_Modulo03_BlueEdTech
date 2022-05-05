@@ -5,6 +5,7 @@ import "./Home.css";
 import NavBar from "components/Navbar/NavBar";
 import { ActionMode } from "constants/index";
 
+
 function Home() {
   const [canShowBookModal, setCanShowBookModal] = useState(false);
   const [bookToAdd, setBookToAdd] = useState();
@@ -12,10 +13,10 @@ function Home() {
 
   const [bookForEdit, setBookForEdit] = useState();
   const [bookForDelete, setBookForDelete] = useState();
+  const [bookEdited, setBookEdited] = useState();
 
   const handleAction = (action) => {
     const newAction = currentyMode === action ? ActionMode.NORMAL : action;
-    console.log(newAction);
     setCurrentyMode(newAction);
   };
 
@@ -33,6 +34,7 @@ function Home() {
     setBookToAdd();
     setBookForDelete();
     setBookForEdit();
+    setCurrentyMode(ActionMode.NORMAL);
   };
 
   return (
@@ -44,6 +46,7 @@ function Home() {
       />
       <div className="home-container">
         <BookList
+          bookEdited={bookEdited}
           deleteBook={handleDeleteBook}
           updateBook={handleUpdateBook}
           bookCreated={bookToAdd}
@@ -53,6 +56,7 @@ function Home() {
           <AddEditBooksModal
             mode={currentyMode}
             bookForEdit={bookForEdit}
+            onUpdateBook={(book) => setBookEdited(book)}
             closeModal={handleCloseModal}
             onCreateBook={(book) => setBookToAdd(book)}
           />
