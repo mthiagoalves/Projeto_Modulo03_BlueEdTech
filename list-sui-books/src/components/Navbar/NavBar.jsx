@@ -1,12 +1,12 @@
-import "./NavBar.css";
-import { ActionMode } from "constants/index";
-import cart from "assets/icons/cart.png";
-import add from "assets/icons/add-books.png";
-import logo from "assets/logo.png";
-import edit from "assets/icons/book-edit.png";
-import delet from "assets/icons/book-delete.png";
+import './NavBar.css';
+import { ActionMode } from 'constants/index';
+import cart from 'assets/icons/cart.png';
+import add from 'assets/icons/add-books.png';
+import logo from 'assets/logo.png';
+import edit from 'assets/icons/book-edit.png';
+import delet from 'assets/icons/book-delete.png';
 
-function NavBar({ createBook, updateBook, mode, deleteBook }) {
+function NavBar({ createBook, updateBook, mode, deleteBook, openBag }) {
   return (
     <div className="Home__header Header">
       <div className="row">
@@ -30,7 +30,7 @@ function NavBar({ createBook, updateBook, mode, deleteBook }) {
           <button
             type="button"
             className={`options-books books ${
-              mode === ActionMode.UPDATE && "book-action"
+              mode === ActionMode.UPDATE && 'book-action'
             }`}
             onClick={() => updateBook()}
           >
@@ -44,7 +44,7 @@ function NavBar({ createBook, updateBook, mode, deleteBook }) {
           <button
             type="button"
             className={`options-books books ${
-              mode === ActionMode.DELET && "book-delete"
+              mode === ActionMode.DELET && 'book-delete'
             }`}
             onClick={() => deleteBook()}
           >
@@ -62,6 +62,7 @@ function NavBar({ createBook, updateBook, mode, deleteBook }) {
               width="40px"
               className="Sacola__icone"
               alt="Sacola de compras"
+              onClick={openBag}
             />
           </div>
         </div>

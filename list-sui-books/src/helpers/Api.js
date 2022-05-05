@@ -7,7 +7,14 @@ const BookContext = {
   deleteBook: (id) => `${BookContext.bookEndpoint()}/delete/${id}`,
 };
 
+const bagContext = {
+  getBag: () => `${BookContext.bookEndpoint()}/all-cart`,
+  createBag: () => `${BookContext.bookEndpoint()}/create-cart`,
+  purchase: () => `${BookContext.bookEndpoint()}/finish-cart`,
+};
+
 export const Api = {
-  baseUrl: "https://api-shelves-books.onrender.com",
+  baseUrl: 'https://api-shelves-books.onrender.com',
   ...BookContext,
+  ...bagContext,
 };

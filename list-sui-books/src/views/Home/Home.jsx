@@ -1,12 +1,15 @@
-import BookList from "components/BooksList/BookList";
-import { useState } from "react";
-import AddEditBooksModal from "components/AddEditBooksModal/AddEditBooksModal";
-import "./Home.css";
-import NavBar from "components/Navbar/NavBar";
-import { ActionMode } from "constants/index";
-import DeleteBookModal from "components/DeleteBookModal/DeleteBookModal";
+import BookList from 'components/BooksList/BookList';
+import { useState } from 'react';
+import AddEditBooksModal from 'components/AddEditBooksModal/AddEditBooksModal';
+import './Home.css';
+import NavBar from 'components/Navbar/NavBar';
+import { ActionMode } from 'constants/index';
+import DeleteBookModal from 'components/DeleteBookModal/DeleteBookModal';
+import BagModal from 'components/BagModal/BagModal';
+import { BagServices } from 'services/BagServices';
 
 function Home() {
+  const [canOpenBag, setCanOpenBag] = useState();
   const [canShowBookModal, setCanShowBookModal] = useState(false);
   const [bookToAdd, setBookToAdd] = useState();
   const [currentyMode, setCurrentyMode] = useState(ActionMode.NORMAL);
@@ -38,10 +41,20 @@ function Home() {
     setCurrentyMode(ActionMode.NORMAL);
   };
 
+  const openingBag = async () => {
+    const list = JSON.parse(localStorage.getItem('bag'));
+    const bag = list.filter((i) => i.amount > 0);
+
+    await BagServices.create(bag);
+
+    setCanOpenBag(true);
+  };
+
   return (
     <div className="Home">
       <NavBar
         mode={currentyMode}
+        openBag={openingBag}
         createBook={() => setCanShowBookModal(true)}
         updateBook={() => handleAction(ActionMode.UPDATE)}
         deleteBook={() => handleAction(ActionMode.DELET)}
@@ -71,6 +84,7 @@ function Home() {
             onDeleteBook={(book) => setBookDeleted(book)}
           />
         )}
+        {canOpenBag && <BagModal closeModal={() => setCanOpenBag(false)} />}
       </div>
     </div>
   );
