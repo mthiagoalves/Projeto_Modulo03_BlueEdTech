@@ -56,11 +56,10 @@ function NavBar({ createBook, updateBook, mode, deleteBook, openBag }) {
             />
           </button>
 
-          <div className="Opcoes__sacola Sacola">
+          <div className="Opcoes__sacola Sacola" onClick={openBag}>
             <img
               src={cart}
               width="40px"
-              onClick={openBag}
               className="Sacola__icone"
               alt="Sacola de compras"
             />

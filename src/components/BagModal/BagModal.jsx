@@ -3,13 +3,16 @@ import Modal from 'components/Modal/Modal';
 import { BagServices } from 'services/BagServices';
 import { useEffect, useState } from 'react';
 import { BookServices } from 'services/BookServices';
+import { useNavigate } from 'react-router-dom';
 
 function BagModal({ closeModal }) {
+  const navigate = useNavigate();
+
   const [list, setList] = useState([]);
 
   const purchase = async () => {
     await BagServices.purchase();
-    // ROTAS/NAVEGAÇÃO AQUI
+    navigate('/loading');
   };
 
   const handleClose = async () => {
@@ -27,9 +30,9 @@ function BagModal({ closeModal }) {
     };
 
     if (Array.isArray(bagList)) {
-      const newList = bagList.map(({ bookId, amount }) => ({
+      const newList = bagList.map(({ bookId, qtdSelected }) => ({
         name: findName(bookId),
-        amount,
+        qtdSelected,
       }));
 
       setList(newList);
@@ -46,10 +49,10 @@ function BagModal({ closeModal }) {
         <h2>Books & amount</h2>
 
         <div>
-          {list.map((i, idx) => (
-            <div key={idx}>
+          {list.map((book, index) => (
+            <div key={index}>
               {' '}
-              {i.title + ' ' + i.amout + 'x'} <br />
+              {book.title + ' ' + book.qtdSelected + 'x'} <br />
             </div>
           ))}
         </div>
