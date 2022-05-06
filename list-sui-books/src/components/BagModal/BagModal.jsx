@@ -49,7 +49,7 @@ function BagModal({ closeModal }) {
           {list.map((i, idx) => (
             <div key={idx}>
               {' '}
-              {i.name + ' ' + i.amout + 'x'} <br />
+              {i.title + ' ' + i.amout + 'x'} <br />
             </div>
           ))}
         </div>
