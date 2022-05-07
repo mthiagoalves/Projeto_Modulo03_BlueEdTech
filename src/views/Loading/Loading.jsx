@@ -7,7 +7,7 @@ function Loading() {
 
   useEffect(() => {
     localStorage.setItem('bag', '[]');
-    localStorage.setItem('seleted', '{}');
+    localStorage.setItem('selected', '{}');
 
     setTimeout(() => {
       navigate('/');
