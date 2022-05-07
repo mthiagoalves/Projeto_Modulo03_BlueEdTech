@@ -20,18 +20,19 @@ function BagModal({ closeModal }) {
     closeModal();
   };
 
-  const getList = async () => {
-    const bookList = await BookServices.getList();
-    const bagList = await BagServices.getList();
+  const getLists = async () => {
+    const bookLists = await BookServices.getList();
+    const bag = await BagServices.getList();
 
     const findName = (id) => {
-      const obj = bookList.find((i) => i.id === id);
+      const obj = bookLists.find((i) => i.id === id);
+
       return (obj && obj.title) ?? '';
     };
 
-    if (Array.isArray(bagList)) {
-      const newList = bagList.map(({ bookId, qtdSelected }) => ({
-        name: findName(bookId),
+    if (Array.isArray(bag)) {
+      const newList = bag.map(({ bookId, qtdSelected }) => ({
+        title: findName(bookId),
         qtdSelected,
       }));
 
@@ -40,7 +41,7 @@ function BagModal({ closeModal }) {
   };
 
   useEffect(() => {
-    getList();
+    getLists();
   }, []);
 
   return (

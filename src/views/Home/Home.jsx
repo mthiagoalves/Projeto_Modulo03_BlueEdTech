@@ -43,7 +43,7 @@ function Home() {
 
   const openingBag = async () => {
     const list = JSON.parse(localStorage.getItem('bag'));
-    const bag = list.filter((i) => i.amount > 0);
+    const bag = list.filter((i) => i.qtdSelected > 0);
 
     await BagServices.createBag(bag);
 

@@ -25,7 +25,7 @@ function BookList({
 
   const [bookModal, setBookModal] = useState(false);
 
-  const addItem = (bookIndex) => {
+  const addItem = (bookIndex) => {  
     const book = { [bookIndex]: Number(selectBook[bookIndex] || 0) + 1 };
     setSelectBook({ ...selectBook, ...book });
   };
