@@ -47,13 +47,13 @@ function BagModal({ closeModal }) {
   return (
     <Modal closeModal={handleClose}>
       <div className="bag-modal">
-        <h2>Books & amount</h2>
+        <h2>Amont & Books</h2>
 
         <div>
           {list.map((book, index) => (
             <div key={index}>
               {' '}
-              {book.title + ' ' + book.qtdSelected + 'x'} <br />
+              {book.qtdSelected + 'x' + ' - ' + book.title} <br />
             </div>
           ))}
         </div>
